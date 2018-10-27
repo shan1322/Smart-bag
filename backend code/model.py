@@ -1,6 +1,7 @@
 import numpy as np
-from keras.layers.core import Dense
-from keras.models import Sequential
+import tensorflow as tf
+from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.models import Sequential
 
 features = np.load("../clean_data/x_train.npy")
 labels = np.load("../clean_data/y_train.npy")
@@ -20,5 +21,8 @@ def dense_net(data):
 
 
 model = dense_net(features)
-model.fit(x=features, y=labels, batch_size=64, epochs=10, verbose=1)
-model.save("../models/Dense.h5")
+model.fit(x=features, y=labels, batch_size=128, epochs=10, verbose=1)
+keras_file = "../models/Dense.h5"
+tf.keras.models.save_model(model, keras_file)
+
+

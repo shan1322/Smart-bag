@@ -1,5 +1,5 @@
 import numpy as np
-from keras.models import load_model
+from tensorflow.python.keras.models import load_model
 
 features = np.load("../clean_data/x_test.npy")
 labels = np.load("../clean_data/y_test.npy")
