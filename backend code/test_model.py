@@ -1,9 +1,14 @@
 import itertools
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import sklearn.metrics as metrics
+import tensorflow as tf
 from tensorflow.python.keras.models import load_model
+
+os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 
 features = np.load("../clean_data/x_test.npy")
 labels = np.load("../clean_data/y_test.npy")
@@ -39,7 +44,6 @@ def plot_confusion_matrix(cm, classes,
     else:
         print('Confusion matrix, without normalization')
 
-
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -62,6 +66,17 @@ def plot_confusion_matrix(cm, classes,
 pred, nn = test_acc(features, labels, model)
 print("accuracy", pred[1] * 100)
 print("loss", pred[0])
+
+
+##save model
+tf.keras.utils.plot_model(
+    nn,
+    to_file='../conf_mat/model.png',
+    show_shapes=False,
+    show_layer_names=True,
+    rankdir='TB'
+)
+
 conf_mat = confusion_matrix(features, labels, nn)
 plot_confusion_matrix(conf_mat, classes=class_names, normalize=True,
                       title='Normalized confusion matrix')
