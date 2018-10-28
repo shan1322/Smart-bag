@@ -7,7 +7,10 @@ model = "../models/Dense.h5"
 
 
 def test_acc(fea, lab, mod):
-    neural_nework = load_model(mod)
+    try:
+        neural_nework = load_model(mod)
+    except:
+        print("model not found")
     prediction = neural_nework.evaluate(x=features, y=labels, verbose=1, batch_size=64)
     return prediction
 

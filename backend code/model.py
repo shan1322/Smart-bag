@@ -21,7 +21,7 @@ def dense_net(data):
 
 
 model = dense_net(features)
-model.fit(x=features, y=labels, batch_size=128, epochs=10, verbose=1)
+model.fit(x=features, y=labels, batch_size=32, epochs=10, verbose=1)
 keras_file = "../models/Dense.h5"
 tf.keras.models.save_model(model, keras_file)
 
