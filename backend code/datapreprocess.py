@@ -23,7 +23,7 @@ def label_encoder(variable):
 
 
 def train_test(feature, label):
-    x1, x2, y1, y2 = train_test_split(feature, label, test_size=0.1, random_state=42)
+    x1, x2, y1, y2 = train_test_split(feature, label, test_size=0.2, random_state=42)
     return x1, x2, y1, y2
 
 
